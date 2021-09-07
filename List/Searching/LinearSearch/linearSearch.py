@@ -23,3 +23,5 @@ numberToSearch = 30
 indexOfNumber = linearSearch(list, numberToSearch)
 
 print("index is ", indexOfNumber) if(indexOfNumber != -1) else print("Number Not found")
+
+
