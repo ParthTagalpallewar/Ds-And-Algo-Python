@@ -24,3 +24,13 @@ def interativeSearch(list, n):
 binaryIndex = interativeSearch(list, n)
 
 print("Not Found") if(binaryIndex == -1) else print(binaryIndex)
+
+
+""""
+
+In Iterative :- 
+
+time complexity  is n = log (n)
+space Complexity n = o(1)
+
+"""

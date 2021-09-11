@@ -41,5 +41,6 @@ else:
 In Recursive :- 
 
 time complexity  is n = log (n)
+space Complexity n = log (n)
 
 """
