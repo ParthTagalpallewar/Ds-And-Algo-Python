@@ -20,4 +20,5 @@ else:
 if first_str == second_str[::-1]: # ''.join(reversed(second_str)) [slower]
 	print(string, 'string is palindrome')
 else:
+    
 	print(string, 'string is not palindrome')
