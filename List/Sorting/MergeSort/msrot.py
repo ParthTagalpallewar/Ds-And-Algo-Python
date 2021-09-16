@@ -1,16 +1,22 @@
 def mergeSort(arr):
-    
-    if(len(arr) == 1):
+    print(" ")
+    print("List ", arr)
+    if(len(arr) > 1):
+        lArr = arr[:len(arr)//2] # left half array
+        rArr = arr[len(arr)//2:] # right half array
+        print(lArr ,"   ", rArr)
+
+
+        mergeSort(lArr)
+        mergeSort(rArr)
+       
+        return mergeArray(lArr, rArr)
+    else:
         return arr
 
-    mid = len(arr) // 2
-    lArr = mergeSort(arr[:mid]) # left half array
-    rArr = mergeSort(arr[mid:]) # right half array
-
-    return mergeArray(lArr, rArr)
-    
 def mergeArray(lArr, rArr):
   
+    print("Got ", lArr , "  ", rArr, "  For merging")
     sortedArr = []
     
     li = ri = 0
@@ -36,7 +42,7 @@ def mergeArray(lArr, rArr):
         sortedArr.append(rArr[ri])
         ri += 1
     
-    
+    print("Returing Sorted Array ", sortedArr , end = "\n\n")
     return sortedArr
 
 list = [5, 4, 3, 2, 1]
