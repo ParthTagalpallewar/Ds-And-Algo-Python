@@ -14,7 +14,7 @@ def heapify(list, size, i):
         list[i], list[largest] = list[largest], list[i] 
         heapify(list, size, largest)
 
-def heapSort(list):
+def heapSort(list): 
     n = len(list)
 
     #Building Max tree

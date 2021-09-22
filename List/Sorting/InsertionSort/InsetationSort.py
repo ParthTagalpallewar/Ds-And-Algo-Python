@@ -3,6 +3,7 @@ def insertationSort(list):
     for i in range(1, len(list)):
         j = i-1
         
+        
         while(j >= 0 and list[j] > list[i]):
             
             list[i], list[j] = list[j], list[i]
