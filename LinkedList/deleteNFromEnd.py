@@ -75,60 +75,45 @@ class LinkedList:
             count += 1
 
         temp.next = temp.next.next
-        
-    def insertElements(self, data):
-
-        for _ in data:
-            self.insertAtEnd(_)
     
-    def middleElement(self):
-        fast = self.head
-        slow = self.head
-
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
-
-        print("Middle is ", slow.data)
-
-    def reverse(self):
-        saveNext = None
-        current = self.head
-
-        while current:
-            next = current.next
-            current.next = saveNext
-            saveNext = current
-            current = next
-    
-        self.head = saveNext
-
     def deleteNFromEnd(self, n):
-        sizeOfList = self.length()
-        current = self.head
-        counter = 0 
 
+        dummy = Node(0, self.head)
 
-        while (sizeOfList - counter) - 1 != n :
+        fast = dummy
+        slow = dummy
 
-            print(sizeOfList, " ", counter, " ", n, " ", (sizeOfList - counter) - 1 )
+        for _ in range(n+1):
+            fast = fast.next
+        
+        while fast:
+            fast = fast.next
+            slow = slow.next
 
-            current = current.next
-            counter += 1
+        slow.next = slow.next.next
 
-        current.next = current.next.next
+        self.head = dummy.next
 
+    def findMid(self):
+    
+        s = self.head
+        f = self.head
 
+        while f.next.next:
+            f = f.next.next
+            s = s.next
+
+        print(" Mid - ", s.data)
 
 if __name__ == "__main__":
 
     
+    print(0 % 2)
     list = LinkedList() #head is null
 
-    list.insertElements([0, 1, 2, 3, 4, 5, 6])
+    for i in range(20, 0, -1):
+        list.insertAtStart(i)
 
     list.print()
-    
-    list.reverse()
 
-    list.print()
+    list.findMid()

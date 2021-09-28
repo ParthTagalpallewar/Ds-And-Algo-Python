@@ -80,55 +80,68 @@ class LinkedList:
 
         for _ in data:
             self.insertAtEnd(_)
-    
-    def middleElement(self):
-        fast = self.head
-        slow = self.head
 
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
+    def mergeSortedList(self, l2):
+        dummyNode = Node(0) # Creating Dummy Node
+        dummyHead = dummyNode
+        l1 = self.head 
+        
+        # Run while loop till one of list not get empty
+        while l1 and l2:
+            
+            # compair l1 and l2 add smaller 
+            # elements to dummynode
 
-        print("Middle is ", slow.data)
+            if(l1.data > l2.data): 
+                dummyNode.next = l2
+                l2 = l2.next
+                dummyNode = dummyNode.next
+            else:
+                dummyNode.next = l1
+                l1 = l1.next
+                dummyNode = dummyNode.next
 
-    def reverse(self):
-        saveNext = None
-        current = self.head
+        # add the remaining list to next of ended list
+        if(l1 is None):
+            dummyNode.next = l2
+        
+        if(l2 is None):
+            dummyNode.next = l1
 
-        while current:
-            next = current.next
-            current.next = saveNext
-            saveNext = current
-            current = next
-    
-        self.head = saveNext
+        # set the l1 to dummy none
+        self.head = dummyHead.next
 
-    def deleteNFromEnd(self, n):
-        sizeOfList = self.length()
-        current = self.head
-        counter = 0 
+    def reversLinkList(self):
+       
+        previous = None
+        li = self.head
 
+        while(li):
+            next = li.next
+            li.next = previous
+            previous = li
+            li = next
 
-        while (sizeOfList - counter) - 1 != n :
+        self.head = previous
 
-            print(sizeOfList, " ", counter, " ", n, " ", (sizeOfList - counter) - 1 )
-
-            current = current.next
-            counter += 1
-
-        current.next = current.next.next
-
-
-
+       
 if __name__ == "__main__":
 
     
-    list = LinkedList() #head is null
+    list1 = LinkedList() #head is null
+    list2 = LinkedList() #head is null
 
-    list.insertElements([0, 1, 2, 3, 4, 5, 6])
+    list1.insertElements([1, 3, 5, 9])
+    list2.insertElements([1, 4, 6, 9, 11])
 
-    list.print()
     
-    list.reverse()
+    list1.print()
 
-    list.print()
+    list1.reversLinkList()
+
+    list1.print()
+
+    
+    
+
+    
