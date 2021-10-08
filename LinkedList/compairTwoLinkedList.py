@@ -139,18 +139,108 @@ class LinkedList:
         else:
             return 1
 
+    def addLinkedlist(self, l1, l2):
+        resultNode = Node(0)
+        resulthead = resultNode
+        
+        carry = 0
+        
+        while l1 or l2:
+            
+            sum = carry
+
+            if l1:
+                sum += l1.data
+                l1 = l1.next
+
+            if l2:
+                sum += l2.data
+                l2 = l2.next
+            
+          
+            carry = 0 if(sum < 10) else 1
+            sum = sum % 10
+           
+            resultNode.next = Node(sum, None)
+            resultNode = resultNode.next
+            
+        
+            
+        
+            
+        if carry == 1:
+            resultNode.next = Node(carry, None)
+           
+            
+            
+            
+        return resulthead.next
+
+    def findMiddle(self):
+        
+        s = self.head
+        f = self.head
+
+        while f and f.next:
+            s = s.next
+            f = f.next.next
+        
+        print(s.data)
+
+    def checkPalindrome(self):
+
+        head = self.head
+
+        s = head
+        f = head
+        
+        # go to middle of linked list
+        while f and f.next:
+            s = s.next
+            f = f.next.next
+            
+        middle = s # finded middle
+        
+        #reverse the secound half part form middle
+        
+        previous = None
+        
+        while middle:
+            print("reversing")
+            next = middle.next
+            middle.next = previous
+            previous = middle
+            middle = next
+        
+        reversedList = previous
+        
+        # head of seconnd half is at previous
+        # check if list and previous is palindrome
+        
+        while reversedList and head:
+            if head.data == reversedList.data:
+                head = head.next
+                reversedList = reversedList.next
+            else:
+                return False
+        else:
+            return True
+
+        
+
 if __name__ == "__main__":
 
     
     list1 = LinkedList() #head is null
-    list2 = LinkedList() #head is null
+   
+    
 
-    list1.insertElements([1, 2])
-    list2.insertElements([1])
+    list1.insertElements([1, 2, 1])
+   
+  
+    result = list1.checkPalindrome()
 
-    comp = list1.compairTwoLinkedList(list1.head, list2.head)
-
-    print(comp)
+    print(result)
 
     
     
