@@ -8,8 +8,8 @@ class LinkedList:
     def __init__(self):
         self.head = None
 
-    def print(self):
-        temp = self.head
+    def print(self, listhead = None):
+        temp = listhead if listhead is not None else self.head
         strData = ""
         while(temp):
             strData += str(temp.data)+ ' --> ' if(temp.next) else str(temp.data)
@@ -118,6 +118,28 @@ class LinkedList:
 
         current.next = current.next.next
 
+    def reverseInGroups(self, head, k):
+
+            current = head
+            next = None
+            prev = None
+            count = 0
+
+            while current is not None and count < k:
+
+                next = current.next
+                current.next = prev
+                prev = current
+                current = next
+                count += 1
+
+            if next is not None:
+                head.next = self.reverseInGroups(next, k)
+
+            return prev
+
+  
+    
 
 
 if __name__ == "__main__":
@@ -125,10 +147,10 @@ if __name__ == "__main__":
     
     list = LinkedList() #head is null
 
-    list.insertElements([0, 1, 2, 3, 4, 5, 6])
+    list.insertElements([1, 2, 3, 4, 5, 6, 7, 8])
 
     list.print()
     
-    list.reverse()
+    head = list.reverseInGroups(list.head, 3)
 
-    list.print()
+    list.print(head)
