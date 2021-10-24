@@ -36,8 +36,8 @@ def mergeArray(lArr, rArr):
         sortedArr.append(rArr[ri])
         ri += 1
     
-    
-    return sortedArr
+    print(sortedArr)
+   
 
 list = [5, 4, 3, 2, 1]
 list = mergeSort(list)

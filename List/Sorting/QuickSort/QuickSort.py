@@ -1,14 +1,14 @@
 
 
 def findPivot(list, start, end):
-    print("Def Find Pivot start :- ",start ," End  ", end )
+   
     pi_index = start # index of pivot
     pi = list[pi_index] # pivot element-
 
     while start <= end:
        
-        while start <= end and list[start] <= pi : 
-            start+=1
+        while list[start] <= pi : 
+            start += 1
             
 
         while list[end] > pi: 
@@ -40,7 +40,7 @@ def quickSort(list, start, end):
         
         
 
-# list = [11, 2, 4, 67, 768, 435, 3, 5]
+list = [11, 2, 4, 67, 768, 435, 3, 5]
 
 print("List Before Reverse ", list, " Length ", len(list))
 quickSort(list, 0, len(list)-1)
