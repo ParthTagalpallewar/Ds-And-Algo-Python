@@ -7,7 +7,7 @@ def findPivot(list, start, end):
 
     while start <= end:
        
-        while list[start] <= pi : 
+        while start < end and list[start] <= pi : 
             start += 1
             
 
