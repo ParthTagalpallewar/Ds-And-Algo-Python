@@ -10,8 +10,8 @@ def minimumJumps(nums, n):
     
     for i in range(n):
         if(i > previous):
-            jumps = jumps + 1
-            previous = current
+            jumps += 1
+            previous = current  
         
         current = max(current, i + nums[i])
     
@@ -19,7 +19,7 @@ def minimumJumps(nums, n):
 
 if __name__ == '__main__':
     
-    list = [1, 2, 1, 2, 6, 7]
+    list = [1, 2, 3, 5, 6, 7, 1, 1, 1]
     N = len(list)
 
     minJumps = minimumJumps(list, N)
