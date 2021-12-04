@@ -190,6 +190,53 @@ class BinarySearchTreeNode:
         
         return lot
 
+    def zig_zag_traversal(self, root):
+        current = root
+        left_stack, right_stack, tree = [], [], []
+
+        left = True
+
+        right_stack.append(current)
+        tree.append(current.data)
+
+        while current:
+            
+
+            if left and right_stack:
+                
+                while right_stack:
+                    current = right_stack.pop()
+                    
+                    if current.left:
+                        left_stack.append(current.left)
+                        tree.append(current.left.data)
+
+                    if current.right:
+                        left_stack.append(current.right)
+                        tree.append(current.right.data)
+                    
+                left = not left
+
+            elif not left and left_stack:
+                
+                while left_stack:
+                    current = left_stack.pop()
+
+                    if current.right:
+                        right_stack.append(current.right)
+                        tree.append(current.right.data)
+                    
+                    if current.left:
+                        right_stack.append(current.left)
+                        tree.append(current.left.data)
+                    
+                left = not left
+
+            else:
+                break
+        
+        return tree
+
 def build_binary_tree(elements):
     
     root = BinarySearchTreeNode(elements[0])
@@ -206,17 +253,17 @@ def traversal_algo(number_tree):
     # iterative_pre_order_traversal = numbers_tree.pre_order_traversal()
     # post_order_tree = numbers_tree.post_order_traversal()
     # iterative_post_order_tree = numbers_tree.iterative_post_order_traversal(numbers_tree)
-
-   
-    level_order_transvarsal = number_tree.level_order_traversal(number_tree)
-
-    print(level_order_transvarsal)
+    # level_order_transvarsal = number_tree.level_order_traversal(number_tree)
+    zig_zag_traversal = number_tree.zig_zag_traversal(number_tree)
+    
     # print(in_order_tree)
     # print(iterative_in_order_traversal)
     # print(pre_order_tree)
     # print(iterative_pre_order_traversal)
     # print(post_order_tree)
     # print(iterative_post_order_tree)
+    # print(level_order_transvarsal)
+    print(zig_zag_traversal)
     pass
 
 if __name__ == '__main__':
