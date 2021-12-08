@@ -237,6 +237,14 @@ class BinarySearchTreeNode:
         
         return tree
 
+    def verticalTraversal(self, root):
+
+        
+    
+
+    def count(self, root):
+        return self.count(root.left) + self.count(root.right) + 1 if root else 0
+        
 def build_binary_tree(elements):
     
     root = BinarySearchTreeNode(elements[0])
@@ -272,3 +280,4 @@ if __name__ == '__main__':
     numbers_tree = build_binary_tree(list)
     
     traversal_algo(numbers_tree)
+    print("No of nodes are ", numbers_tree.count(numbers_tree))
